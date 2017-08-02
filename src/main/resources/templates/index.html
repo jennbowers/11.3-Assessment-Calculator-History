@@ -4,28 +4,37 @@
     <meta charset="UTF-8"/>
     <title>Math Time</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
-
+    <link rel="stylesheet" href="/css/styles.css"/>
 </head>
-<body class="container">
-<h1>Let's Do Math!</h1>
-<form action="/">
-    <div class="form-group">
-        <label for="name">Want to save this operation? Enter your name here:</label>
-        <input type="text" name="name" id="name"/>
+<body>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="/">Do Math</a></li>
+            <li role="presentation"><a href="/history">See History</a></li>
+        </ul>
+        <h1>Let's Do Math!</h1>
+        <form class="form-inline" action="/">
+            <div class="form-group">
+                <label for="name">Want to save this operation? Enter your name here:</label>
+                <input type="text" name="name" class="form-control" id="name"/>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <input type="text" name="firstOperand" class="form-control" th:value="${result}"/>
+                <select name="operatorSelect" class="form-control" id="operator-select">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+                <input type="text" class="form-control" name="secondOperand"/>
+                <input class="btn btn-primary" type="submit" name="Calculate"/>
+            </div>
+        </form>
+        <h4>Your Full Equation was: </h4>
+        <h5 th:text="${fullEquation}"></h5>
+        <h4>Your Result was:</h4>
+        <h5 th:text="${result}"></h5>
     </div>
-    <input type="text" name="firstOperand" th:value="${result}"/>
-    <select name="operatorSelect" id="operator-select">
-        <option value="+">+</option>
-        <option value="-">-</option>
-        <option value="*">*</option>
-        <option value="/">/</option>
-    </select>
-    <input type="text" name="secondOperand"/>
-    <input type="submit" name="Calculate"/>
-</form>
-<h4>Your Full Equation was: </h4>
-<h5 th:text="${fullEquation}"></h5>
-<h4>Your Result was:</h4>
-<h5 th:text="${result}"></h5>
 </body>
 </html>

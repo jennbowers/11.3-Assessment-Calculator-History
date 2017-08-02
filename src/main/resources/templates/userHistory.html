@@ -4,31 +4,38 @@
     <meta charset="UTF-8"/>
     <title>User History</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
 </head>
-<body class="container">
-    <h1>User History</h1>
-    <div class="search-user">
-        <form action="/history" method="post">
-            <label for="name">Search for a specific user's operations:</label>
-            <input type="text" name="name" id="name"/>
-            <input type="submit" name="search" id="search" value="Search for User"/>
-        </form>
-        <form action="/history">
-            <input type="submit" name="reset" id="reset" value="Reset Search" />
-        </form>
-    </div>
-    <hr/>
-
-    <div class="user-history" th:each="operation : ${operations}">
-        <div class="name" th:text="${operation.name}"></div>
-        <div class="equation">
-            <span th:text="${operation.operand1}"></span>
-            <span th:text="${operation.operator}"></span>
-            <span th:text="${operation.operand2}"></span>
-            <span> = </span>
-            <span th:text="${operation.solution}"></span>
+<body>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/">Do Math</a></li>
+            <li role="presentation" class="active"><a href="/history">See History</a></li>
+        </ul>
+        <h1>User History</h1>
+        <div class="search-user">
+            <form class="form-inline" action="/history" method="post">
+                <label for="name">Search for a specific user's operations:</label>
+                <input type="text" name="name" class="form-control" id="name"/>
+                <input class="btn btn-primary" type="submit" name="search" id="search" value="Search for User"/>
+            </form>
+            <form class="form-inline" action="/history">
+                <input class="btn btn-primary" type="submit" name="reset" id="reset" value="Reset Search" />
+            </form>
         </div>
         <hr/>
+
+        <div class="user-history" th:each="operation : ${operations}">
+            <div class="name" th:text="${operation.name}"></div>
+            <div class="equation">
+                <span th:text="${operation.operand1}"></span>
+                <span th:text="${operation.operator}"></span>
+                <span th:text="${operation.operand2}"></span>
+                <span> = </span>
+                <span th:text="${operation.solution}"></span>
+            </div>
+            <hr/>
+        </div>
     </div>
 
 </body>
