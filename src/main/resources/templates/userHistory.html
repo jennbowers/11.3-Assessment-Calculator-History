@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8"/>
     <title>User History</title>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
 </head>
-<body>
+<body class="container">
     <h1>User History</h1>
     <div class="search-user">
         <form action="/history" method="post">
@@ -17,18 +17,7 @@
             <input type="submit" name="reset" id="reset" value="Reset Search" />
         </form>
     </div>
-
-    <!--<div class="user-history" th:each="userOperation : ${userOperations}">-->
-        <!--<div class="name" th:text="${userOperation.name}"></div>-->
-        <!--<div class="equation">-->
-            <!--<span th:text="${userOperation.operand1}"></span>-->
-            <!--<span th:text="${userOperation.operator}"></span>-->
-            <!--<span th:text="${userOperation.operand2}"></span>-->
-            <!--<span> = </span>-->
-            <!--<span th:text="${userOperation.solution}"></span>-->
-        <!--</div>-->
-        <!--<hr/>-->
-    <!--</div>-->
+    <hr/>
 
     <div class="user-history" th:each="operation : ${operations}">
         <div class="name" th:text="${operation.name}"></div>

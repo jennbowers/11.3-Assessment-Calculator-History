@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Math Time</title>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
 
 </head>
-<body>
-<h1>Let's do Math!</h1>
+<body class="container">
+<h1>Let's Do Math!</h1>
 <form action="/">
     <div class="form-group">
         <label for="name">Want to save this operation? Enter your name here:</label>
@@ -23,9 +23,9 @@
     <input type="text" name="secondOperand"/>
     <input type="submit" name="Calculate"/>
 </form>
-<h3>Your Full Equation was: </h3>
-<h3 th:text="${fullEquation}"></h3>
-<h3>Your Result was:</h3>
-<h3 th:text="${result}"></h3>
+<h4>Your Full Equation was: </h4>
+<h5 th:text="${fullEquation}"></h5>
+<h4>Your Result was:</h4>
+<h5 th:text="${result}"></h5>
 </body>
 </html>
