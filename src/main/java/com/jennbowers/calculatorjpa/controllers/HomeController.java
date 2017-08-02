@@ -21,17 +21,20 @@ public class HomeController {
     OperationsRepository repo;
 
     @RequestMapping("/")
-    public String index(@RequestParam(value = "firstOperand", required = false) Double                              firstOperand,
+    public String index(@RequestParam(value = "firstOperand", required = false) String                              firstOperandString,
                         @RequestParam(value = "operatorSelect", required = false) String operatorSelect,
-                        @RequestParam(value = "secondOperand", required = false) Double secondOperand,
+                        @RequestParam(value = "secondOperand", required = false) String secondOperandString,
                         @RequestParam(value = "name", required = false) String name,
                         ModelMap model){
-        try {
-            System.out.println(name);
-            System.out.println(firstOperand);
-            System.out.println(operatorSelect);
-            System.out.println(secondOperand);
 
+            System.out.println(name);
+            System.out.println(firstOperandString);
+            System.out.println(operatorSelect);
+            System.out.println(secondOperandString);
+
+        try {
+            Double firstOperand = Double.parseDouble(firstOperandString);
+            Double secondOperand = Double.parseDouble(secondOperandString);
             double result = CalculationsHelper.calculator(firstOperand, operatorSelect, secondOperand);
 
             Operations newOperations = new Operations(name, firstOperand, operatorSelect, secondOperand, result);
@@ -41,8 +44,14 @@ public class HomeController {
             model.addAttribute("result", result);
         } catch (NullPointerException e) {
             System.out.println("Please enter a valid number");
+        } catch (NumberFormatException ex) {
+            System.out.println("Please enter a number");
+            return "index";
         }
+
         return "index";
+
+
     }
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)
