@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class HomeController {
 
@@ -45,6 +48,24 @@ public class HomeController {
     @RequestMapping(value = "/history", method = RequestMethod.GET)
     public String history(Model model) {
         Iterable<Operations> operations = repo.findAll();
+        model.addAttribute("operations", operations);
+        return "userHistory";
+    }
+
+    @RequestMapping(value = "/history", method = RequestMethod.POST)
+    public String history(@RequestParam("name") String name,
+                          Model model){
+        Iterable<Operations> operations = repo.findAll();
+        List<Operations> userOperations = new ArrayList<>();
+
+        for (Operations operation : operations) {
+            if (operation.getName().equals(name)) {
+                userOperations.add(operation);
+            }
+        }
+
+        operations = userOperations;
+        System.out.println("working");
         model.addAttribute("operations", operations);
         return "userHistory";
     }
