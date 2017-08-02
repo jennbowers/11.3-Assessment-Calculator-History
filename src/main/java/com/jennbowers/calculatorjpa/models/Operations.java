@@ -1,23 +1,23 @@
 package com.jennbowers.calculatorjpa.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "WebCalculator")
-public class WebCalculator {
-    private long id;
+@Table(name = "operations")
+public class Operations {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private double operand1;
     private String operator;
     private double operand2;
     private double solution;
 
-    public WebCalculator() {
+    public Operations() {
     }
 
-    public WebCalculator(long id, String name, double operand1, String operator, double operand2, double solution) {
-        this.id = id;
+    public Operations(String name, double operand1, String operator, double operand2, double solution) {
         this.name = name;
         this.operand1 = operand1;
         this.operator = operator;
@@ -25,11 +25,11 @@ public class WebCalculator {
         this.solution = solution;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

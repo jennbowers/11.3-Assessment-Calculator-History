@@ -1,6 +1,6 @@
 package com.jennbowers.calculatorjpa.helpers;
 
-public class Calculations {
+public class CalculationsHelper {
     public static double calculator(Double firstOperand, String operator, Double secondOperand) {
         double result= 0;
         switch(operator) {
